@@ -1,3 +1,4 @@
+import React, { useContext, useEffect } from 'react';
 import {
   List,
   ListItem,
@@ -5,14 +6,14 @@ import {
   TextField,
   Button,
 } from '@material-ui/core';
-import { useRouter } from 'next/router';
-import React, { useContext, useEffect } from 'react';
+
 import Layout from '../components/Layout';
-import { Store } from '../utils/Store';
 import useStyles from '../utils/styles';
 import Cookies from 'js-cookie';
 import { Controller, useForm } from 'react-hook-form';
 import CheckoutWizard from '../components/CheckoutWizard';
+import { useRouter } from 'next/router';
+import { Store } from '../utils/Store';
 
 export default function Shipping() {
   const {
@@ -21,10 +22,6 @@ export default function Shipping() {
     formState: { errors },
     setValue,
   } = useForm();
-import { useRouter } from 'next/router';
-import { Store } from '../utils/Store';
-
-export default function Shipping() {
   const router = useRouter();
   const { state, dispatch } = useContext(Store);
   const {
@@ -58,28 +55,28 @@ export default function Shipping() {
     router.push('/payment');
   };
   return (
-    <Layout title="Shipping Address">
+    <Layout title='Shipping Address'>
       <CheckoutWizard activeStep={1} />
       <form onSubmit={handleSubmit(submitHandler)} className={classes.form}>
-        <Typography component="h1" variant="h1">
+        <Typography component='h1' variant='h1'>
           Shipping Address
         </Typography>
         <List>
           <ListItem>
             <Controller
-              name="fullName"
+              name='fullName'
               control={control}
-              defaultValue=""
+              defaultValue=''
               rules={{
                 required: true,
                 minLength: 2,
               }}
               render={({ field }) => (
                 <TextField
-                  variant="outlined"
+                  variant='outlined'
                   fullWidth
-                  id="fullName"
-                  label="Full Name"
+                  id='fullName'
+                  label='Full Name'
                   error={Boolean(errors.fullName)}
                   helperText={
                     errors.fullName
@@ -95,19 +92,19 @@ export default function Shipping() {
           </ListItem>
           <ListItem>
             <Controller
-              name="address"
+              name='address'
               control={control}
-              defaultValue=""
+              defaultValue=''
               rules={{
                 required: true,
                 minLength: 2,
               }}
               render={({ field }) => (
                 <TextField
-                  variant="outlined"
+                  variant='outlined'
                   fullWidth
-                  id="address"
-                  label="Address"
+                  id='address'
+                  label='Address'
                   error={Boolean(errors.address)}
                   helperText={
                     errors.address
@@ -123,19 +120,19 @@ export default function Shipping() {
           </ListItem>
           <ListItem>
             <Controller
-              name="city"
+              name='city'
               control={control}
-              defaultValue=""
+              defaultValue=''
               rules={{
                 required: true,
                 minLength: 2,
               }}
               render={({ field }) => (
                 <TextField
-                  variant="outlined"
+                  variant='outlined'
                   fullWidth
-                  id="city"
-                  label="City"
+                  id='city'
+                  label='City'
                   error={Boolean(errors.city)}
                   helperText={
                     errors.city
@@ -151,19 +148,19 @@ export default function Shipping() {
           </ListItem>
           <ListItem>
             <Controller
-              name="postalCode"
+              name='postalCode'
               control={control}
-              defaultValue=""
+              defaultValue=''
               rules={{
                 required: true,
                 minLength: 2,
               }}
               render={({ field }) => (
                 <TextField
-                  variant="outlined"
+                  variant='outlined'
                   fullWidth
-                  id="postalCode"
-                  label="Postal Code"
+                  id='postalCode'
+                  label='Postal Code'
                   error={Boolean(errors.postalCode)}
                   helperText={
                     errors.postalCode
@@ -179,19 +176,19 @@ export default function Shipping() {
           </ListItem>
           <ListItem>
             <Controller
-              name="country"
+              name='country'
               control={control}
-              defaultValue=""
+              defaultValue=''
               rules={{
                 required: true,
                 minLength: 2,
               }}
               render={({ field }) => (
                 <TextField
-                  variant="outlined"
+                  variant='outlined'
                   fullWidth
-                  id="country"
-                  label="Country"
+                  id='country'
+                  label='Country'
                   error={Boolean(errors.country)}
                   helperText={
                     errors.country
@@ -206,7 +203,7 @@ export default function Shipping() {
             ></Controller>
           </ListItem>
           <ListItem>
-            <Button variant="contained" type="submit" fullWidth color="primary">
+            <Button variant='contained' type='submit' fullWidth color='primary'>
               Continue
             </Button>
           </ListItem>
@@ -214,5 +211,4 @@ export default function Shipping() {
       </form>
     </Layout>
   );
-}
 }
